@@ -4,6 +4,7 @@ const path = require('path');
 
 module.exports = {
   resolve: {
+    extensions: ['.js', '.jsx'],
     modules: [
       path.join(__dirname, 'src'),
       'node_modules'
@@ -13,7 +14,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client',
     'webpack/hot/only-dev-server',
-    path.join(__dirname, 'src', 'index.js')
+    path.join(__dirname, 'src', 'index.jsx')
   ],
 
   output: {
@@ -24,7 +25,7 @@ module.exports = {
 
   module: {
     rules: [{
-      test: /\.js$/,
+      test: /\.jsx?$/,
       exclude: /node_modules/,
       use: {
         loader: 'babel-loader'
@@ -37,6 +38,7 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Redux Ecommerce',
+      template: path.join('src', 'index.html'),
       filename: 'index.html'
     })
   ],
