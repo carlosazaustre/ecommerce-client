@@ -1,0 +1,32 @@
+{
+  "name": "ecommerce-client",
+  "version": "1.0.0",
+  "description": "Workshop React + Redux code example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosazaustre/ecommerce-client.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "node.js"
+  ],
+  "author": "Carlos Azaustre <cazaustre@gmail.com> (https://carlosazaustre.es)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlosazaustre/ecommerce-client/issues"
+  },
+  "homepage": "https://github.com/carlosazaustre/ecommerce-client#readme",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-react": "^6.23.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.0"
+  }
+}
