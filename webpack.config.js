@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -29,6 +31,15 @@ module.exports = {
       }
     }]
   },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Redux Ecommerce',
+      filename: 'index.html'
+    })
+  ],
 
   devServer: {
     host: '0.0.0.0',
