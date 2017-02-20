@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import Header from './common/Header';
 import ProductList from './products/ProductList';
 import API from './api';
 
@@ -25,9 +27,7 @@ class App extends Component {
   render () {
     return (
       <main role="main">
-        <nav className="navbar navbar-light bg-faded">
-          <h1 className="navbar-brand mb-0">Redux Ecommerce</h1>
-        </nav>
+        <Header />
         <ProductList
           products={this.state.products}
         />
