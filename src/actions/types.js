@@ -1,0 +1,6 @@
+export const ADD_ITEM = 'ADD_ITEM';
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const PROCESS_CHECKOUT = 'PROCESS_CHECKOUT';
+
+export const LOAD_ALL_PRODUCTS = 'LOAD_ALL_PRODUCTS';
+export const LOAD_SINGLE_PRODUCT = 'LOAD_ALL_PRODUCTS';
