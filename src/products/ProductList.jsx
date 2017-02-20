@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Product from './Product';
 
 const ProductList = ({ products }) => {
@@ -8,7 +8,7 @@ const ProductList = ({ products }) => {
         {
           products.map(product => (
             <Product
-              key={product.id}
+              key={product._id}
               {...product}
             />
           ))
@@ -16,6 +16,14 @@ const ProductList = ({ products }) => {
       </div>
     </section>
   );
+};
+
+ProductList.defaultProps = {
+  products: []
+};
+
+ProductList.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default ProductList;
