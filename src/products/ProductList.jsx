@@ -1,29 +1,42 @@
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
 import Product from './Product';
+import API from '../api';
 
-const ProductList = ({ products }) => {
-  return (
-    <section className="container">
-      <div className="row">
-        {
-          products.map(product => (
-            <Product
-              key={product._id}
-              {...product}
-            />
-          ))
-        }
-      </div>
-    </section>
-  );
-};
+class ProductList extends Component {
+  constructor () {
+    super();
+    this.state = {
+      products: []
+    };
+  }
 
-ProductList.defaultProps = {
-  products: []
-};
+  componentDidMount () {
+    this.initialFetch();
+  }
 
-ProductList.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.object)
-};
+  async initialFetch () {
+    const data = await API.products.getProducts();
+    this.setState({
+      products: this.state.products.concat(data.products)
+    });
+  }
+
+  render () {
+    return (
+      <section className="container">
+        <div className="row">
+          {
+            this.state.products.map(product => (
+              <Product
+                key={product._id}
+                {...product}
+              />
+            ))
+          }
+        </div>
+      </section>
+    );
+  }
+}
 
 export default ProductList;
