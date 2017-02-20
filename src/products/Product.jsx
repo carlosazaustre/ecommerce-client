@@ -1,11 +1,16 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
-const Product = ({ name, description, image, price, deliveryStimate, category }) => {
+const Product = ({ _id, name, description, image, price, deliveryStimate, category }) => {
   return (
     <div className="card col-xs-12 col-sm-6 col-lg-4">
-      <img className="card-img-top" height="450" src={image} alt={name} />
+      <Link to={`/detail/${_id}`}>
+        <img className="card-img-top" height="450" src={image} alt={name} />
+      </Link>
       <div className="card-block">
-        <h4 className="card-title">{name}</h4>
+        <Link to={`/detail/${_id}`}>
+          <h4 className="card-title">{name}</h4>
+        </Link>
         <p className="card-text">{description}</p>
       </div>
       <ul className="list-group list-group-flush">
@@ -21,6 +26,7 @@ const Product = ({ name, description, image, price, deliveryStimate, category })
 };
 
 Product.propTypes = {
+  _id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,

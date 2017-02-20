@@ -66,6 +66,7 @@ module.exports = {
     hot: true,
     port: 3000,
     inline: true,
-    contentBase: path.join(__dirname, './src')
+    contentBase: path.join(__dirname, './src'),
+    historyApiFallback: true
   }
 };

@@ -8,6 +8,6 @@ import ProductDetail from './products/ProductDetail';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={ProductList} />
-    <Route path="/detail" component={ProductDetail} />
+    <Route path="/detail/:productId" component={ProductDetail} />
   </Route>
 );
