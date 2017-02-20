@@ -31,7 +31,7 @@ class ProductDetail extends Component {
             <img className="figure-img img-thumbnail rounded" src={image} alt={name} />
           </figure>
           <div className="col-lg-6">
-            <br/>
+            <br />
             <h4>{name}</h4>
             <p>{description}</p>
             <ul className="list-group">
@@ -39,7 +39,7 @@ class ProductDetail extends Component {
               <li className="list-group-item">Entrega:<strong> {deliveryStimate}</strong></li>
               <li className="list-group-item">Categoría: <span className="badge badge-pill badge-info"> {category}</span></li>
             </ul>
-            <br/>
+            <br />
             <button className="btn btn-primary">
               <span className="fa fa-shopping-cart" /> Añadir al carrito
             </button>
