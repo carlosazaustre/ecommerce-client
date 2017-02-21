@@ -1,24 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as productActions from '../actions/productActions';
 import Product from './Product';
-import API from '../api';
 
 class ProductList extends Component {
-  constructor () {
-    super();
-    this.state = {
-      products: []
-    };
-  }
 
-  componentDidMount () {
-    this.initialFetch();
-  }
-
-  async initialFetch () {
-    const data = await API.products.getProducts();
-    this.setState({
-      products: this.state.products.concat(data.products)
-    });
+  async componentDidMount () {
+    await this.props.actions.getAllProducts();
   }
 
   render () {
@@ -26,7 +16,7 @@ class ProductList extends Component {
       <section className="container">
         <div className="row">
           {
-            this.state.products.map(product => (
+            this.props.products.map(product => (
               <Product
                 key={product._id}
                 {...product}
@@ -39,4 +29,21 @@ class ProductList extends Component {
   }
 }
 
-export default ProductList;
+function mapStateToProps (state) {
+  return {
+    products: state.products
+  };
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    actions: bindActionCreators(productActions, dispatch)
+  };
+}
+
+ProductList.propTypes = {
+  products: PropTypes.objectOf(PropTypes.object).isRequired,
+  actions: PropTypes.objectOf(PropTypes.func).isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
