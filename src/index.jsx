@@ -2,12 +2,21 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+import { syncHistoryWithStore } from 'react-router-redux';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
 import routes from './routes';
+import configureStore from './store/configureStore';
+
+const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
-  <Router history={browserHistory} routes={routes} />,
+  <Provider store={store}>
+    <Router history={history} routes={routes} />
+  </Provider>,
+
   document.getElementById('root')
 );
