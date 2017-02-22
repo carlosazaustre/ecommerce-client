@@ -3,21 +3,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import ProductList from './ProductList';
-import * as productActions from '../actions/productActions';
+import * as productsActions from '../actions/productsActions';
 
 class ProductListPage extends Component {
   constructor (props, context) {
     super(props, context);
-    this.state = {
-      loading: true
-    };
   }
 
   async componentWillMount () {
-    await this.props.actions.getAllProducts();
-    this.setState({
-      loading: this.props.loading
-    });
+    await this.props.actions.fetchProducts();
   }
 
   render () {
@@ -37,15 +31,16 @@ ProductListPage.propTypes = {
 };
 
 function mapStateToProps (state) {
+  debugger;
   return {
-    products: state.products,
-    loading: state.ajaxCallsInProgress > 0
+    products: state.products.productsList.products,
+    loading: state.products.productsList.loading
   };
 }
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(productActions, dispatch)
+    actions: bindActionCreators(productsActions, dispatch)
   };
 }
 
