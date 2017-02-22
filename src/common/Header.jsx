@@ -12,7 +12,9 @@ const Header = () => {
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="#"><span className="fa fa-shopping-cart"></span></a>
+            <Link className="nav-link" to="/cart">
+              <span className="fa fa-shopping-cart" />
+            </Link>
           </li>
         </ul>
       </div>

@@ -2,12 +2,14 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './App';
-import ProductListPage from './products/ProductListPage';
-import ProductDetailPage from './products/ProductDetailPage';
+import ProductListContainer from './products/ProductListContainer';
+import ProductDetailContainer from './products/ProductDetailContainer';
+import CartContainer from './cart/CartContainer';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={ProductListPage} />
-    <Route path="/detail/:productId" component={ProductDetailPage} />
+    <IndexRoute component={ProductListContainer} />
+    <Route path="/detail/:productId" component={ProductDetailContainer} />
+    <Route path="/cart" component={CartContainer} />
   </Route>
 );

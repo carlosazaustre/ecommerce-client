@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as productsActions from '../actions/productsActions';
 import ProductDetail from './ProductDetail';
 
-class ProductDetailPage extends Component {
+class ProductDetailContainer extends Component {
   constructor (props, context) {
     super(props, context);
     this.state = {
@@ -27,7 +27,7 @@ class ProductDetailPage extends Component {
   }
 }
 
-ProductDetailPage.propTypes = {
+ProductDetailContainer.propTypes = {
   productId: PropTypes.string.isRequired,
   product: PropTypes.object,
   loading: PropTypes.bool.isRequired,
@@ -37,8 +37,8 @@ ProductDetailPage.propTypes = {
 function mapStateToProps (state, ownProps) {
   return {
     productId: ownProps.params.productId,
-    product: state.products.activeProduct.product,
-    loading: state.products.activeProduct.loading,
+    product: state.activeProduct.product,
+    loading: state.activeProduct.loading,
   };
 }
 
@@ -48,4 +48,4 @@ function mapDispatchToProps (dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductDetailPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetailContainer);

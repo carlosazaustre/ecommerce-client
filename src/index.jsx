@@ -9,8 +9,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import routes from './routes';
 import configureStore from './store/configureStore';
+import initialState from './reducers/initialState';
 
-const store = configureStore();
+const store = configureStore(initialState);
 const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(

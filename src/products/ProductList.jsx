@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Product from './Product';
 
-const ProductList = ({ loading, products }) => {
+const ProductList = ({ loading, products, onAddItem }) => {
   return (
     <section className="container">
       { loading && <span>Cargando Datos...</span> }
@@ -10,6 +10,7 @@ const ProductList = ({ loading, products }) => {
           products.map(product => (
             <Product
               key={product._id}
+              onAddItem={onAddItem}
               {...product}
             />
           ))
