@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import routes from './routes';
 import configureStore from './store/configureStore';
+import { getAllProducts } from './actions/productActions';
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);

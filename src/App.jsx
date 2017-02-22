@@ -1,11 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+// import { connect } from 'react-redux';
 import Header from './common/Header';
 
 class App extends Component {
-  constructor () {
-    super();
-  }
-
   render () {
     return (
       <main role="main">
@@ -15,5 +12,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  children: PropTypes.objectOf(PropTypes.object).isRequired,
+};
 
 export default App;

@@ -1,35 +1,38 @@
 import {
-  LOAD_SINGLE_PRODUCT,
-  LOAD_ALL_PRODUCTS
+  LOAD_SINGLE_PRODUCT_SUCCESS,
+  LOAD_ALL_PRODUCTS_SUCCESS
 } from './types';
+import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
 
 import API from '../api';
 
-function loadSingleProduct (product) {
-  return {
-    type: LOAD_SINGLE_PRODUCT,
-    product
-  };
+// Actions Creators
+function loadSingleProductSuccess (product) {
+  return { type: LOAD_SINGLE_PRODUCT_SUCCESS, product };
 }
 
-function loadAllProducts (products) {
-  return {
-    type: LOAD_ALL_PRODUCTS,
-    products
-  };
+function loadAllProductsSuccess (products) {
+  return { type: LOAD_ALL_PRODUCTS_SUCCESS, products };
 }
 
+// Thunks
 function getSingleProduct (productId) {
   return async (dispatch) => {
     const data = await API.products.getSingle(productId);
-    dispatch(loadSingleProduct(data.product));
+    dispatch(loadSingleProductSuccess(data.product));
   };
 }
 
 function getAllProducts () {
   return async (dispatch) => {
-    const data = await API.products.getAll();
-    dispatch(loadAllProducts(data.products));
+    dispatch(beginAjaxCall());
+    try {
+      const data = await API.products.getAll();
+      return dispatch(loadAllProductsSuccess(data.products));
+    } catch (err) {
+      dispatch(ajaxCallError());
+      throw (err);
+    }
   };
 }
 

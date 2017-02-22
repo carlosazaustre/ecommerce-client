@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import * as product from './productReducer';
+import products from './productReducer';
+import ajaxCallsInProgress from './ajaxStatusReducer';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
-  product
+  products,
+  ajaxCallsInProgress
 });
 
 export default rootReducer;
