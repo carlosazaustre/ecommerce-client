@@ -14,34 +14,37 @@ class ProductDetailPage extends Component {
   }
 
   async componentWillMount () {
-    const { actions, params } = this.props;
-    debugger;
-    await actions.getSingleProduct(params.productId);
+    await this.props.actions.fetchProduct(this.props.productId);
   }
 
   render () {
     return (
-      <div>
-        { this.state.loading && <span>Cargando Datos...</span> }
-        { this.state.loading || <ProductDetail product={this.props.product}/> }
-      </div>
+      <ProductDetail
+        loading={this.props.loading}
+        product={this.props.product}
+      />
     );
   }
 }
 
 ProductDetailPage.propTypes = {
-  product: PropTypes.object.isRequired
+  productId: PropTypes.string.isRequired,
+  product: PropTypes.object,
+  loading: PropTypes.bool.isRequired,
+  actions: PropTypes.objectOf(PropTypes.func).isRequired
 };
 
-function mapStateToProps (state) {
+function mapStateToProps (state, ownProps) {
   return {
-    product: state.products
+    productId: ownProps.params.productId,
+    product: state.products.activeProduct.product,
+    loading: state.products.activeProduct.loading,
   };
 }
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(productActions, dispatch)
+    actions: bindActionCreators(productsActions, dispatch)
   };
 }
 

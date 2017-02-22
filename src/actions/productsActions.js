@@ -1,13 +1,9 @@
 import API from '../api';
 import {
-  FETCH_PRODUCTS,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE,
-  RESET_PRODUCTS,
-  FETCH_PRODUCT,
   FETCH_PRODUCT_SUCCESS,
   FETCH_PRODUCT_FAILURE,
-  RESET_ACTIVE_PRODUCT
 } from './types';
 
 // Actions Creators
@@ -25,6 +21,21 @@ export function fetchProductsFailure (error) {
   };
 }
 
+export function fetchProductSuccess (product) {
+  return {
+    type: FETCH_PRODUCT_SUCCESS,
+    payload: product
+  };
+}
+
+export function fetchProductFailure (error) {
+  return {
+    type: FETCH_PRODUCT_FAILURE,
+    payload: error
+  };
+}
+
+// Thunks
 export function fetchProducts () {
   return async (dispatch) => {
     try {
@@ -36,10 +47,13 @@ export function fetchProducts () {
   };
 }
 
-export function resetProducts () {
-  return { type: RESET_PRODUCTS };
-}
-
-export function resetActiveProduct () {
-  return { type: RESET_ACTIVE_PRODUCT };
+export function fetchProduct (productId) {
+  return async (dispatch) => {
+    try {
+      const data = await API.products.getSingle(productId);
+      return dispatch(fetchProductSuccess(data.product));
+    } catch (error) {
+      return dispatch(fetchProductFailure(error));
+    }
+  };
 }

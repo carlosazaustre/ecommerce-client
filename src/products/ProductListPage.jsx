@@ -31,7 +31,6 @@ ProductListPage.propTypes = {
 };
 
 function mapStateToProps (state) {
-  debugger;
   return {
     products: state.products.productsList.products,
     loading: state.products.productsList.loading

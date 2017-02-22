@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const Header = (props) => {
+const Header = () => {
   return (
     <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse">
       <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon" />
       </button>
-      <a className="navbar-brand" href="/">Redux Ecommerce</a>
+      <Link className="navbar-brand" to="/">Redux Ecommerce</Link>
 
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav mr-auto">
