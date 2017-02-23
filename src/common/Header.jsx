@@ -3,20 +3,11 @@ import { Link } from 'react-router';
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-      <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon" />
-      </button>
-      <Link className="navbar-brand" to="/">Redux Ecommerce</Link>
-
-      <div className="collapse navbar-collapse">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <Link className="nav-link" to="/cart">
-              <span className="fa fa-shopping-cart" />
-            </Link>
-          </li>
-        </ul>
+    <nav className="navbar navbar-inverse bg-inverse">
+      <div className="container">
+        <Link className="navbar-brand" to="/">Redux Ecommerce</Link> |
+        <Link className="navbar-text" to="/cart"><span className="fa fa-lg fa-shopping-cart" /></Link> |
+        <Link className="navbar-text" to="/add"><span className="fa fa-lg fa-plus-square" /></Link> |
       </div>
     </nav>
   );

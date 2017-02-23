@@ -21,7 +21,7 @@ const ProductDetail = ({ loading, product, onAddItem }) => {
             </ul>
             <br />
             <button className="btn btn-primary" onClick={() => onAddItem(product)}>
-              <span className="fa fa-shopping-cart" /> Añadir al carrito
+              <span className="fa fa-cart-plus" /> Añadir al carrito
             </button>
           </div>
         </div>

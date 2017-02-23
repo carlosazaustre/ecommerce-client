@@ -66,7 +66,7 @@ module.exports = {
   devServer: {
     host: '0.0.0.0',
     hot: true,
-    port: 3000,
+    port: 8080,
     inline: true,
     contentBase: path.join(__dirname, './src'),
     historyApiFallback: true

@@ -26,7 +26,7 @@ const Product = ({ _id, name, description, image, price, deliveryStimate, catego
               _id, name, description, image, price, deliveryStimate, category
             })}
           >
-            <span className="fa fa-shopping-cart" /> Añadir al carrito
+            <span className="fa fa-cart-plus" /> Añadir al carrito
           </button>
         </div>
       </div>

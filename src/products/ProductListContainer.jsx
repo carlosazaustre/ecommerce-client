@@ -39,7 +39,7 @@ ProductListContainer.defaultProps = {
 ProductListContainer.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool.isRequired,
-  productActions: PropTypes.objectOf(PropTypes.func).isRequired,
+  productsActions: PropTypes.objectOf(PropTypes.func).isRequired,
   cartActions: PropTypes.objectOf(PropTypes.func).isRequired
 };
 
