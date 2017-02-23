@@ -16,7 +16,7 @@ export default function productsListReducer (state = initialState.productsList, 
         loading: false
       };
 
-    case FETCH_PRODUCTS_FAILURE: // Return an error
+    case FETCH_PRODUCTS_FAILURE: { // Return an error
       // 2nd one is network or server down errors
       error = action.payload || { message: action.payload.message };
       return {
@@ -25,6 +25,7 @@ export default function productsListReducer (state = initialState.productsList, 
         error,
         loading: false
       };
+    }
 
     default:
       return state;

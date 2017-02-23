@@ -13,20 +13,25 @@ export default function cartReducer (state = initialState.cart, action) {
         items: [...state.items]
       };
 
-    case REMOVE_CART_ITEM:
-      const index = state.items.findIndex((elem) => elem._id === action.payload);
+    case REMOVE_CART_ITEM: {
+      const searchItem = (elem) => elem._id === action.payload;
+      const item = state.items.find(searchItem);
+      const index = state.items.findIndex(searchItem);
       return {
         ...state,
         items: [
           ...state.items.slice(0, index),
           ...state.items.slice(index + 1)
-        ]
+        ],
+        total: state.total - item.price
       };
+    }
 
     case ADD_CART_ITEM:
       return {
         ...state,
-        items: [...state.items, action.payload]
+        items: [...state.items, action.payload],
+        total: state.total + action.payload.price
       };
 
     default:

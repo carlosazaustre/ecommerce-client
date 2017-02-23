@@ -3,21 +3,19 @@ import CartItem from './CartItem';
 
 const CartItemsList = ({ items, onRemoveItem }) => {
   return (
-    <section className="container">
-      <div className="list-group">
-        {
-          items.map((item) => {
-            return (
-              <CartItem
-                key={item._id}
-                onRemoveItem={onRemoveItem}
-                {...item}
-              />
-            );
-          }).reverse()
-        }
-      </div>
-    </section>
+    <div className="list-group">
+      {
+        items.map((item) => {
+          return (
+            <CartItem
+              key={item._id}
+              onRemoveItem={onRemoveItem}
+              {...item}
+            />
+          );
+        }).reverse()
+      }
+    </div>
   );
 };
 

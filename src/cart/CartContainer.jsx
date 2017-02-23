@@ -22,26 +22,35 @@ class CartContainer extends Component {
 
   render () {
     return (
-      <CartItemsList
-        items={this.props.items}
-        onRemoveItem={this.handleOnRemoveItem}
-      />
+      <section className="container">
+        <CartItemsList
+          items={this.props.items}
+          onRemoveItem={this.handleOnRemoveItem}
+        />
+        <hr />
+        <div className="row">
+          <p>Total: <strong>{this.props.total} &euro;</strong></p>
+        </div>
+      </section>
     );
   }
 }
 
 CartContainer.defaultProps = {
-  items: []
+  items: [],
+  total: 0
 };
 
 CartContainer.propTypes = {
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
-  items: PropTypes.arrayOf(PropTypes.object)
+  items: PropTypes.arrayOf(PropTypes.object),
+  total: PropTypes.number
 };
 
 function mapStateToProps (state) {
   return {
-    items: state.cart.items
+    items: state.cart.items,
+    total: state.cart.total
   };
 }
 

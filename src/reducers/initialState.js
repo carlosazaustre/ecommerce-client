@@ -10,7 +10,8 @@ const initialState = {
     loading: false
   },
   cart: {
-    items: []
+    items: [],
+    total: 0
   }
 };
 
