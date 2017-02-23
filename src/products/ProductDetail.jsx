@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const ProductDetail = ({ loading, product }) => {
+const ProductDetail = ({ loading, product, onAddItem }) => {
   if (!loading && product) {
     const { _id, image, name, description, price, deliveryStimate, category } = product;
 
@@ -20,7 +20,7 @@ const ProductDetail = ({ loading, product }) => {
               <li className="list-group-item">Categoría: <span className="badge badge-pill badge-info"> {category}</span></li>
             </ul>
             <br />
-            <button className="btn btn-primary">
+            <button className="btn btn-primary" onClick={() => onAddItem(product)}>
               <span className="fa fa-shopping-cart" /> Añadir al carrito
             </button>
           </div>

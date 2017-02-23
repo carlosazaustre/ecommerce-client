@@ -14,7 +14,7 @@ class ProductListContainer extends Component {
   }
 
   async componentWillMount () {
-    await this.props.productActions.fetchProducts();
+    await this.props.productsActions.fetchProducts();
   }
 
   handleOnAddItem (item) {
@@ -52,7 +52,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    productActions: bindActionCreators(productsActions, dispatch),
+    productsActions: bindActionCreators(productsActions, dispatch),
     cartActions: bindActionCreators(cartActions, dispatch)
   };
 }

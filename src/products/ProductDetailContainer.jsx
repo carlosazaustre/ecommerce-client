@@ -3,18 +3,22 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as productsActions from '../actions/productsActions';
+import * as cartActions from '../actions/cartActions';
 import ProductDetail from './ProductDetail';
 
 class ProductDetailContainer extends Component {
   constructor (props, context) {
     super(props, context);
-    this.state = {
-      loading: true
-    };
+
+    this.handleOnAddItem = this.handleOnAddItem.bind(this);
   }
 
   async componentWillMount () {
-    await this.props.actions.fetchProduct(this.props.productId);
+    await this.props.productsActions.fetchProduct(this.props.productId);
+  }
+
+  handleOnAddItem (item) {
+    this.props.cartActions.addCartItem(item);
   }
 
   render () {
@@ -22,6 +26,7 @@ class ProductDetailContainer extends Component {
       <ProductDetail
         loading={this.props.loading}
         product={this.props.product}
+        onAddItem={this.handleOnAddItem}
       />
     );
   }
@@ -31,7 +36,9 @@ ProductDetailContainer.propTypes = {
   productId: PropTypes.string.isRequired,
   product: PropTypes.object,
   loading: PropTypes.bool.isRequired,
-  actions: PropTypes.objectOf(PropTypes.func).isRequired
+  onAddItem: PropTypes.func.isRequired,
+  productsActions: PropTypes.objectOf(PropTypes.func).isRequired,
+  cartActions: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 function mapStateToProps (state, ownProps) {
@@ -44,7 +51,8 @@ function mapStateToProps (state, ownProps) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(productsActions, dispatch)
+    productsActions: bindActionCreators(productsActions, dispatch),
+    cartActions: bindActionCreators(cartActions, dispatch)
   };
 }
 

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import uuid from 'uuid';
 import CartItem from './CartItem';
 
 const CartItemsList = ({ items, onRemoveItem }) => {
@@ -8,7 +9,7 @@ const CartItemsList = ({ items, onRemoveItem }) => {
         items.map((item) => {
           return (
             <CartItem
-              key={item._id}
+              key={uuid.v4()}
               onRemoveItem={onRemoveItem}
               {...item}
             />
@@ -24,7 +25,8 @@ CartItemsList.defaultProps = {
 };
 
 CartItemsList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object)
+  items: PropTypes.arrayOf(PropTypes.object),
+  onRemoveItem: PropTypes.func.isRequired
 };
 
 export default CartItemsList;
